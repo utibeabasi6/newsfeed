@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+    <title>{% block title %} News Feed {% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.css')}}">
+    <script src="{{url_for('static', filename='jquery.min.js.download')}}"></script>
+    <script src="{{url_for('static', filename='bootstrap.js')}}"></script>
+
+
+</head>
+{% block style %}
+<style>
+    .jumbotron{
+    border-radius: 0;
+    }
+</style>
+{% endblock %}
+<body>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-md">
+        <span class="navbar-brand">News Feed</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+
+            <ul class="navbar-nav ml-auto">
+                {% if session.get('name') != None%}
+            <li class="nav-item"><span class="text-white nav-link">Welcome, {{session.get('name')}}</span></li>
+            {% else %}
+            <li class="nav-item"><span class="text-white nav-link">Welcome, Guest</span></li>
+            {% endif %}
+                <li class="nav-item"><a href="{{ url_for('views.home')}}" class="nav-link">Home</a></li>
+                {% if session.get('name') != None%}
+                <li class="nav-item"><a href="{{ url_for('views.logout')}}" class="nav-link">Logout</a></li>
+                {% else %}
+                <li class="nav-item"><a href="{{ url_for('views.login')}}" class="nav-link">Login</a></li>
+                {% endif %}
+                <li class="nav-item"><a href="{{ url_for('views.register')}}" class="nav-link">Register</a></li>
+
+            </ul>
+        </div>
+    </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert-{{category}}"><p class="p-2 mb-0">{{message}}</p></div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
