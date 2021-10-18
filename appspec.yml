@@ -9,6 +9,8 @@ hooks:
   AfterInstall:
     - location: scripts/install.sh
       timeout: 1000
+    - location: scripts/get_secrets.sh
+      timeout: 500
   ApplicationStart:
     - location: scripts/start.sh
       timeout: 1000
