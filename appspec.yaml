@@ -1,0 +1,12 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/newsfeed
+    file_exists_behavior: OVERWRITE
+
+hooks:
+  ApplicationStart:
+    - location: scripts/start.sh
+      timeout: 3600
+  
