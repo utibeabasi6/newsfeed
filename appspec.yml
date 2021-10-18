@@ -10,6 +10,7 @@ hooks:
     - location: scripts/install.sh
       timeout: 3600
   ApplicationStart:
+    - location: scripts/install.sh
     - location: scripts/start.sh
       timeout: 3600
   
