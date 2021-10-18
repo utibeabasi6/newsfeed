@@ -6,6 +6,9 @@ files:
     file_exists_behavior: OVERWRITE
 
 hooks:
+  AfterInstall:
+    - location: scripts/install.sh
+      timeout: 3600
   ApplicationStart:
     - location: scripts/start.sh
       timeout: 3600
