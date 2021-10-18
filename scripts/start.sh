@@ -1,3 +1,3 @@
 #!/bin/sh
 
-python3 /home/ubuntu/newsfeed/main.py
+gunicorn --bind 0.0.0.0:5000 /home/ubuntu/newsfeed/main:app -D
