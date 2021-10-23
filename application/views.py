@@ -52,7 +52,7 @@ def login_required(f):
 
 # Views
 
-@views.route('/')
+@views.route('/', methods=["GET", "POST"])
 @views.route('/home/', methods=['GET', 'POST'])
 def home():
     """
