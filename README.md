@@ -10,6 +10,6 @@ The website is deployed on AWS. It runs on EC2 instances as part of an auto scal
 We setup a VPC in our AWS account with 2 subnets. Then we create an auto-scaling group that spans multiple availability zones. We setup the auto-scaling group to ensure that our app scales as needed in response to the load on the servers. We attatch an Internet Gatewa to ensure our apps have a way to access the internet and we have a route table as well that routes traffic within the VPC
 
 # CI/CD
-![](images/pipeline.png)
+![ci/cd](images/pipeline.png)
 
 We setup CI/CD with AWS code-pipeline. This listen for changes in the github repo and deploys our app with AWS code-deploy to our autoscaling group. The AMI we use for our auto scaling group is a custom one that comes with everything we need to run our app pre-installed. AWS code-deploy takes care of deploying our app to our auto-scaling group. We are using blue-green deployments to ensure little to no downtime.
